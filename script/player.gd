@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #speed
-const SPEED = 300.0
+const SPEED = 100.0
 
 #movement
 func movement():
