@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c2bl02cfq47r4"]
+
+[ext_resource type="PackedScene" uid="uid://c22vyhukm42kc" path="res://scene/player_soul.tscn" id="1_w2wav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sijg0"]
+size = Vector2(4, 204)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2wav"]
+size = Vector2(200, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6v7n"]
+size = Vector2(4, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hd60"]
+size = Vector2(196, 4)
+
+[node name="Node2D" type="Node2D" unique_id=1646106935]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1888388535]
+custom_minimum_size = Vector2(500, 500)
+offset_left = -592.0
+offset_top = -336.0
+offset_right = 660.0
+offset_bottom = 500.0
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1243786541]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=24540145]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=382412599]
+custom_minimum_size = Vector2(200, 200)
+offset_left = -100.0
+offset_top = -59.0
+offset_right = 100.0
+offset_bottom = 141.0
+border_color = Color(1, 1, 1, 1)
+border_width = 3.0
+editor_only = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=305009338]
+position = Vector2(0, -45)
+
+[node name="left_col" type="CollisionShape2D" parent="StaticBody2D" unique_id=57145937]
+position = Vector2(-100, 86)
+shape = SubResource("RectangleShape2D_sijg0")
+
+[node name="top_col" type="CollisionShape2D" parent="StaticBody2D" unique_id=1373477243]
+position = Vector2(2, -14)
+shape = SubResource("RectangleShape2D_w2wav")
+
+[node name="right_col" type="CollisionShape2D" parent="StaticBody2D" unique_id=1296713818]
+position = Vector2(100, 88)
+shape = SubResource("RectangleShape2D_o6v7n")
+
+[node name="bottom_col" type="CollisionShape2D" parent="StaticBody2D" unique_id=105145053]
+position = Vector2(0, 186)
+shape = SubResource("RectangleShape2D_7hd60")
+
+[node name="Player" parent="." unique_id=1273332767 instance=ExtResource("1_w2wav")]
+position = Vector2(1, 34)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=834954788]
+zoom = Vector2(1.2, 1.2)

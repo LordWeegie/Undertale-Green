@@ -25,12 +25,15 @@ func movement(delta: float):
 		speed = walking_speed
 		$Sprite.speed_scale = 1.0
 	
+	# Make sure the character isn't flipped when facing down
 	if $Sprite.animation == "down":
 		$Sprite.flip_h = false
+	# Set can_move to true or false
 	if Input.is_action_pressed("up") and Input.is_action_pressed("down") or Input.is_action_pressed("left") and Input.is_action_pressed("right"):
 		can_move = false
 	else:
 		can_move = true
+	# Move character
 	if can_move:
 		if Input.is_action_pressed("down"):
 			position.y += speed * delta
@@ -48,7 +51,8 @@ func movement(delta: float):
 			$Sprite.flip_h = false
 		elif Input.is_action_pressed("left"):
 			$Sprite.flip_h = true
-
+	
+	# Animate character
 	if Input.is_action_pressed("left") and can_move or Input.is_action_pressed("right") and can_move:
 		$Sprite.play("left_and_right")
 	elif Input.is_action_pressed("down") and can_move:
