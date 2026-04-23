@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b1exe52cexer5"]
+
+[ext_resource type="PackedScene" uid="uid://brpup1yhatd1n" path="res://scene/player/player.tscn" id="1_aamqp"]
+
+[node name="prototype" type="Node2D" unique_id=399153307]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1813957208]
+show_behind_parent = true
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(43.681503, 35.17077)
+color = Color(0, 0, 0, 1)
+
+[node name="CharacterBody2D" parent="." unique_id=1370835567 instance=ExtResource("1_aamqp")]
+position = Vector2(751, 463)
