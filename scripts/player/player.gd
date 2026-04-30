@@ -61,3 +61,4 @@ func movement(delta: float):
 		$Sprite.play("up")
 	else:
 		$Sprite.stop()
+	move_and_slide()
