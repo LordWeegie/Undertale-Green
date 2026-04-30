@@ -11,10 +11,19 @@ extends Camera2D
 @export var right_limit : Node2D
 @export var top_limit : Node2D
 @export var bottom_limit : Node2D
+@export var at_left_limit : bool = false
+@export var at_right_limit : bool = false
+@export var at_top_limit : bool = false
+@export var at_bottom_limit : bool = false
 
+@export var left_limit_pos = 0
+@export var right_limit_pos = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if can_move_horizontal:
+		left_limit_pos = left_limit.position.x
+		right_limit_pos = right_limit.position.x
 	# Set zoom
 	zoom = Vector2(3.0, 3.0)
 	

@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://brpup1yhatd1n" path="res://scene/player/player.tscn" id="1_aamqp"]
 [ext_resource type="Texture2D" uid="uid://s660jmahf661" path="res://asset/maps/prototype_level.png" id="1_n5m7w"]
 [ext_resource type="Script" uid="uid://bqfhta2tsgr80" path="res://scripts/camera.gd" id="3_46ayq"]
+[ext_resource type="Texture2D" uid="uid://cf0hgcyepovv7" path="res://asset/fonts/text_background.png" id="4_marpm"]
+[ext_resource type="Script" uid="uid://d4e1v5omqpj6b" path="res://scripts/text_background.gd" id="5_klmgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5m7w"]
 size = Vector2(10, 51)
@@ -75,3 +77,16 @@ position = Vector2(-250, 10.769)
 
 [node name="right_limit" type="Node2D" parent="." unique_id=1990924562]
 position = Vector2(250, 113.84616)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=692726148 node_paths=PackedStringArray("camera")]
+offset = Vector2(0, -100)
+transform = Transform2D(1, 0, 0, 1, 0, -100)
+script = ExtResource("5_klmgr")
+camera = NodePath("../PCamera")
+
+[node name="TextBackground" type="Sprite2D" parent="CanvasLayer" unique_id=1782450731]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(3.8999999, 2.6)
+texture = ExtResource("4_marpm")

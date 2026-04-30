@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c2gljm0e0mao6"]
+
+[ext_resource type="Shader" uid="uid://bbrj0wca3h7cc" path="res://scripts/text_background.gdshader" id="1_l1epo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oetsn"]
+shader = ExtResource("1_l1epo")
+shader_parameter/base_color = Color(0.2, 0.5, 0.8, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 1.0
+
+[node name="TextBackground" type="Node2D" unique_id=1958638709]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1931911140]
+material = SubResource("ShaderMaterial_oetsn")
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
