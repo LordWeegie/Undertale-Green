@@ -71,7 +71,7 @@ left_limit = NodePath("../left_limit")
 right_limit = NodePath("../right_limit")
 
 [node name="left_limit" type="Node2D" parent="." unique_id=88213634]
-position = Vector2(-220, 10.769)
+position = Vector2(-250, 10.769)
 
 [node name="right_limit" type="Node2D" parent="." unique_id=1990924562]
-position = Vector2(220, 15.385)
+position = Vector2(250, 113.84616)
