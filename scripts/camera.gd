@@ -11,10 +11,7 @@ extends Camera2D
 @export var right_limit : Node2D
 @export var top_limit : Node2D
 @export var bottom_limit : Node2D
-@export var at_left_limit : bool = false
-@export var at_right_limit : bool = false
-@export var at_top_limit : bool = false
-@export var at_bottom_limit : bool = false
+
 
 @export var left_limit_pos = 0
 @export var right_limit_pos = 0
