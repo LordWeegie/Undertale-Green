@@ -19,6 +19,10 @@ config/icon="uid://bblrdb5qx4y7g"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+npc=""
+
 [input]
 
 left={

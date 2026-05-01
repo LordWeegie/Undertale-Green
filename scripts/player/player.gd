@@ -3,6 +3,10 @@ extends CharacterBody2D
 var speed = 100
 @export var walking_speed = 100
 @export var running_speed = 150
+@export var text_background : Sprite2D
+@export var dialogue_box : Label
+@onready var raycast = $RayCast2D
+var is_talking = false
 var moving_up_or_down = false
 var can_move = true
 
@@ -13,8 +17,41 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	movement(delta)
+	set_raycast()
+	check_raycast()
+	print(can_move)
+
+func check_raycast():
+	if is_talking == false:
+		text_background.visible = false
+		dialogue_box.text = ""
+	if raycast.is_colliding(): 
+		if raycast.get_collider().is_in_group("npc"):
+			if Input.is_action_just_pressed("select") and is_talking == false:
+				can_move = false
+				text_background.visible = true
+				is_talking = true
+				for i in range(raycast.get_collider().text.size()):
+						for j in range(len(raycast.get_collider().text[i])):
+							dialogue_box.text = raycast.get_collider().text[i].substr(0, j + 1)
+							await get_tree().create_timer(0.08).timeout
+				is_talking = false
+
+			
+func set_raycast():
+	if can_move and !is_talking:
+		if Input.is_action_pressed("right"):
+			raycast.target_position = Vector2(10, 0)
+		elif Input.is_action_pressed("left"):
+			raycast.target_position = Vector2(-10, 0)
+		elif Input.is_action_pressed("up"):
+			raycast.target_position = Vector2(0, -10)
+		elif Input.is_action_pressed("down"):
+			raycast.target_position = Vector2(0, 10)
 
 func movement(delta: float):
+	if is_talking == true:
+		can_move = false
 	# Sprinting system
 	if Input.is_action_pressed("x"):
 		speed = running_speed
@@ -29,7 +66,7 @@ func movement(delta: float):
 	# Set can_move to true or false
 	if Input.is_action_pressed("up") and Input.is_action_pressed("down") or Input.is_action_pressed("left") and Input.is_action_pressed("right"):
 		can_move = false
-	else:
+	elif !is_talking:
 		can_move = true
 	# Move character
 	if can_move:

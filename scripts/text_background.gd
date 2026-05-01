@@ -10,9 +10,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("select"):
-		$TextBackground.visible = true
-	if Input.is_action_just_pressed("x"):
-		$TextBackground.visible = false
 	if camera:
 		$TextBackground.position = Vector2(get_viewport().get_visible_rect().size.x / 2, get_viewport().get_visible_rect().size.y - 50)

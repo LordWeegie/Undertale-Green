@@ -94,10 +94,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkmeh"]
-size = Vector2(13, 8)
+size = Vector2(13, 10)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1370835567]
 script = ExtResource("1_5lop3")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2133884356]
+position = Vector2(-1, 0)
+target_position = Vector2(0, 24)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1878891826]
 texture_filter = 1
@@ -106,5 +110,5 @@ sprite_frames = SubResource("SpriteFrames_sc4n2")
 animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1787427075]
-position = Vector2(-0.5, 6)
+position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_rkmeh")
