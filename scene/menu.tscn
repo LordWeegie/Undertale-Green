@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://bm5e52qka88p7"]
 
 [ext_resource type="Script" uid="uid://bmq6nw4a702ne" path="res://scripts/menu.gd" id="1_e5g8k"]
+[ext_resource type="Texture2D" uid="uid://bxp4nc0drdt0n" path="res://asset/pixil-frame-0 (8).png" id="2_8hxod"]
 
 [node name="menu" type="Control" unique_id=440707113]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_e5g8k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1363988160]
+texture_filter = 1
+position = Vector2(584, 381)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8hxod")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=766908668]
 texture_filter = 1
