@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 	movement(delta)
 	set_raycast()
 	check_raycast()
-	print(can_move)
 
 func check_raycast():
 	if is_talking == false:
