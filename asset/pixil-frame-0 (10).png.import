@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blswlbghg0y78"
-valid=false
+uid="uid://8trcns8q5oco"
+path="res://.godot/imported/pixil-frame-0 (10).png-4a86a981694e04816fcb5b6040f7124b.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://asset/soul_coin/._soul_coin.png"
+source_file="res://asset/pixil-frame-0 (10).png"
+dest_files=["res://.godot/imported/pixil-frame-0 (10).png-4a86a981694e04816fcb5b6040f7124b.ctex"]
 
 [params]
 
