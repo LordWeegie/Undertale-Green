@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Undertale Green"
-run/main_scene="uid://j5x0snkpweoi"
+run/main_scene="uid://bm5e52qka88p7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://bblrdb5qx4y7g"
 
