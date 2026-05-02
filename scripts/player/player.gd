@@ -11,29 +11,45 @@ var moving_up_or_down = false
 var can_move = true
 var text_skip = false
 
+# Signals
+signal continue_text_signal
+
+# final text check variable
+var final_text = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("select") and is_talking:
+		continue_text_signal.emit()
 	movement(delta)
 	set_raycast()
 	check_raycast()
 
+func wait_text_final():
+	if final_text == true and is_talking == true:
+		await get_tree().create_timer(0.01).timeout
+		final_text = false
+		print(final_text)
+		if final_text == false:
+			print("hey")
+			is_talking = false
 func check_raycast():
 	if is_talking == false:
 		text_background.visible = false
 		dialogue_box.text = ""
+	# a LOT of the dialogue code
 	if raycast.is_colliding(): 
 		if raycast.get_collider().is_in_group("npc"):
-			if Input.is_action_just_pressed("select") and is_talking == false:
+			if Input.is_action_just_pressed("select") and is_talking == false and final_text == false:
 				can_move = false
 				text_background.visible = true
 				is_talking = true
 				for i in range(raycast.get_collider().text.size()):
-					var letter = 0
 					text_skip = false
+					var letter = 0
 					for j in range(len(raycast.get_collider().text[i])):
 						if text_skip == false:
 							letter = j
@@ -42,7 +58,19 @@ func check_raycast():
 							break
 						dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
 						await get_tree().create_timer(0.08).timeout
-				is_talking = false
+					if i < raycast.get_collider().text.size() -1:
+						if text_skip == true:
+							dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
+						final_text = true
+						print(i)
+						await continue_text_signal
+					else:
+						if text_skip == true:
+							dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
+						await continue_text_signal
+						print("wait text final")
+						wait_text_final()
+				
 
 			
 func set_raycast():
