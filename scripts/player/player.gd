@@ -34,7 +34,6 @@ func wait_text_final():
 		final_text = false
 		print(final_text)
 		if final_text == false:
-			print("hey")
 			is_talking = false
 func check_raycast():
 	if is_talking == false:
@@ -68,7 +67,6 @@ func check_raycast():
 						if text_skip == true:
 							dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
 						await continue_text_signal
-						print("wait text final")
 						wait_text_final()
 				
 
