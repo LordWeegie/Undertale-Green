@@ -112,3 +112,5 @@ animation = &"down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1787427075]
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_rkmeh")
+
+[node name="Timer" type="Timer" parent="." unique_id=1891826910]

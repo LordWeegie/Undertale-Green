@@ -9,6 +9,7 @@ var speed = 100
 var is_talking = false
 var moving_up_or_down = false
 var can_move = true
+var text_skip = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,9 +32,16 @@ func check_raycast():
 				text_background.visible = true
 				is_talking = true
 				for i in range(raycast.get_collider().text.size()):
-						for j in range(len(raycast.get_collider().text[i])):
-							dialogue_box.text = raycast.get_collider().text[i].substr(0, j + 1)
-							await get_tree().create_timer(0.08).timeout
+					var letter = 0
+					text_skip = false
+					for j in range(len(raycast.get_collider().text[i])):
+						if text_skip == false:
+							letter = j
+						else:
+							letter = raycast.get_collider().text[i].length()
+							break
+						dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
+						await get_tree().create_timer(0.08).timeout
 				is_talking = false
 
 			
@@ -49,6 +57,9 @@ func set_raycast():
 			raycast.target_position = Vector2(0, 10)
 
 func movement(delta: float):
+	if is_talking == true:
+		if Input.is_action_just_pressed("x"):
+			text_skip = true
 	if is_talking == true:
 		can_move = false
 	# Sprinting system
