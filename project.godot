@@ -16,9 +16,17 @@ run/main_scene="uid://bm5e52qka88p7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://dhld83bgn1680"
 
+[autoload]
+
+DiscordRPCLoader="*uid://b5cef4r7umgw8"
+
 [display]
 
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
 
 [global_group]
 

@@ -1,27 +1,28 @@
 [gd_scene format=3 uid="uid://bm5e52qka88p7"]
 
-[ext_resource type="Script" uid="uid://bmq6nw4a702ne" path="res://scripts/menu.gd" id="1_e5g8k"]
-[ext_resource type="Texture2D" uid="uid://8trcns8q5oco" path="res://asset/pixil-frame-0 (10).png" id="2_8hxod"]
-[ext_resource type="FontFile" uid="uid://dtgree7yiwy3x" path="res://asset/fonts/8bitoperator_jve.ttf" id="3_bo06a"]
+[ext_resource type="Script" uid="uid://drm3rd3m11w86" path="res://scene/ui/menu.gd" id="1_aq76k"]
+[ext_resource type="Texture2D" uid="uid://mmstghiqiktk" path="res://asset/menu/pixil-frame-0 (10).png" id="2_vxad3"]
+[ext_resource type="FontFile" uid="uid://rs34m4jdktdx" path="res://asset/fonts/8bitoperator_jve.ttf" id="3_841d6"]
+[ext_resource type="Script" uid="uid://c7i0ts4vssde2" path="res://scripts/discordrpc.gd" id="4_ijr6s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xs5te"]
-font = ExtResource("3_bo06a")
+font = ExtResource("3_841d6")
 font_size = 42
 
 [sub_resource type="LabelSettings" id="LabelSettings_15se8"]
-font = ExtResource("3_bo06a")
+font = ExtResource("3_841d6")
 font_size = 42
 
 [node name="menu" type="Control" unique_id=440707113]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_e5g8k")
+script = ExtResource("1_aq76k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1363988160]
 texture_filter = 1
 position = Vector2(584, 122.99999)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_8hxod")
+texture = ExtResource("2_vxad3")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=766908668]
 texture_filter = 1
@@ -46,3 +47,6 @@ texture_filter = 1
 layout_mode = 2
 text = "Exit"
 label_settings = SubResource("LabelSettings_15se8")
+
+[node name="Node" type="Node" parent="." unique_id=1635377261]
+script = ExtResource("4_ijr6s")

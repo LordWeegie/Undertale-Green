@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://03igkg6dffdx"]
 
-[ext_resource type="Script" uid="uid://ci0ns1lfk7jws" path="res://scripts/check_player_for_text.gd" id="1_lniid"]
-[ext_resource type="Script" uid="uid://d4e1v5omqpj6b" path="res://scripts/text_background.gd" id="2_cw3sb"]
-[ext_resource type="Texture2D" uid="uid://cf0hgcyepovv7" path="res://asset/fonts/text_background.png" id="3_0vdmy"]
-[ext_resource type="FontFile" uid="uid://dtgree7yiwy3x" path="res://asset/fonts/8bitoperator_jve.ttf" id="4_axptn"]
-[ext_resource type="Script" uid="uid://bqfhta2tsgr80" path="res://scripts/camera.gd" id="5_cw3sb"]
+[ext_resource type="Script" uid="uid://socol8wu6wgq" path="res://scripts/player/text_background.gd" id="1_4xv5i"]
+[ext_resource type="Script" uid="uid://0i5osdw4felv" path="res://scripts/player/check_player_for_text.gd" id="1_tvgr4"]
+[ext_resource type="Texture2D" uid="uid://cl4cgskh2loqn" path="res://asset/fonts/text_background.png" id="3_0vdmy"]
+[ext_resource type="Script" uid="uid://d11w3aabewfrf" path="res://scripts/player/camera.gd" id="3_xu1uj"]
+[ext_resource type="FontFile" uid="uid://rs34m4jdktdx" path="res://asset/fonts/8bitoperator_jve.ttf" id="4_axptn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8yewl"]
 size = Vector2(295.00003, 83.846176)
@@ -17,8 +17,9 @@ font_size = 55
 
 [node name="Extra_player" type="Node2D" parent="." unique_id=771137139]
 
-[node name="check_player_for_text" type="Node2D" parent="Extra_player" unique_id=1151276077]
-script = ExtResource("1_lniid")
+[node name="check_player_for_text" type="Node2D" parent="Extra_player" unique_id=1151276077 node_paths=PackedStringArray("camera")]
+script = ExtResource("1_tvgr4")
+camera = NodePath("../Camera_items/PCamera")
 
 [node name="check_player_bottom" type="Area2D" parent="Extra_player/check_player_for_text" unique_id=1685659070]
 
@@ -27,7 +28,7 @@ position = Vector2(0.5769173, 41.538467)
 shape = SubResource("RectangleShape2D_8yewl")
 
 [node name="check_player_top" type="Area2D" parent="Extra_player/check_player_for_text" unique_id=1097371137]
-position = Vector2(0, -81.53847)
+position = Vector2(1, -93)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Extra_player/check_player_for_text/check_player_top" unique_id=477167568]
 position = Vector2(0.5769173, 40.38462)
@@ -35,10 +36,11 @@ shape = SubResource("RectangleShape2D_8yewl")
 
 [node name="text" type="Node2D" parent="Extra_player" unique_id=637752625]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Extra_player/text" unique_id=153939322]
+[node name="CanvasLayer" type="CanvasLayer" parent="Extra_player/text" unique_id=153939322 node_paths=PackedStringArray("camera")]
 offset = Vector2(39.48, -88.55)
 transform = Transform2D(1, 0, 0, 1, 39.48, -88.55)
-script = ExtResource("2_cw3sb")
+script = ExtResource("1_4xv5i")
+camera = NodePath("../../Camera_items/PCamera")
 
 [node name="TextBackground" type="Sprite2D" parent="Extra_player/text/CanvasLayer" unique_id=1225438969]
 texture_filter = 1
@@ -46,6 +48,7 @@ texture_repeat = 2
 texture = ExtResource("3_0vdmy")
 
 [node name="Label" type="Label" parent="Extra_player/text/CanvasLayer" unique_id=1186821268]
+visible = false
 top_level = true
 offset_left = 341.0
 offset_top = 473.55
@@ -57,12 +60,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera_items" type="Node2D" parent="Extra_player" unique_id=441378721]
 
-[node name="PCamera" type="Camera2D" parent="Extra_player/Camera_items" unique_id=1323800304 node_paths=PackedStringArray("left_limit", "right_limit")]
+[node name="PCamera" type="Camera2D" parent="Extra_player/Camera_items" unique_id=1323800304]
 zoom = Vector2(3, 3)
-script = ExtResource("5_cw3sb")
-can_move_horizontal = true
-left_limit = NodePath("../left_limit")
-right_limit = NodePath("../right_limit")
+script = ExtResource("3_xu1uj")
 
 [node name="left_limit" type="Node2D" parent="Extra_player/Camera_items" unique_id=1053739732]
 position = Vector2(-250.00003, 10.769001)
