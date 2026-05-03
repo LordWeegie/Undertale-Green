@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c2bl02cfq47r4"]
 
 [ext_resource type="PackedScene" uid="uid://c22vyhukm42kc" path="res://scene/players/player_soul.tscn" id="1_w2wav"]
+[ext_resource type="Script" uid="uid://cymtgx0o65w8e" path="res://scripts/player_soul/player.gd" id="2_o6v7n"]
+[ext_resource type="FontFile" uid="uid://rs34m4jdktdx" path="res://asset/fonts/8bitoperator_jve.ttf" id="3_7hd60"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sijg0"]
 size = Vector2(4, 204)
@@ -13,6 +15,10 @@ size = Vector2(4, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hd60"]
 size = Vector2(196, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_twnlr"]
+font = ExtResource("3_7hd60")
+font_size = 22
 
 [node name="Node2D" type="Node2D" unique_id=1646106935]
 
@@ -66,8 +72,23 @@ shape = SubResource("RectangleShape2D_o6v7n")
 position = Vector2(0, 186)
 shape = SubResource("RectangleShape2D_7hd60")
 
-[node name="Player" parent="." unique_id=1273332767 instance=ExtResource("1_w2wav")]
+[node name="Player" parent="." unique_id=1273332767 node_paths=PackedStringArray("health_label") instance=ExtResource("1_w2wav")]
 position = Vector2(1, 34)
+script = ExtResource("2_o6v7n")
+active_health = 20
+health_max = 20
+health_label = NodePath("../Health_Label")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=834954788]
 zoom = Vector2(1.2, 1.2)
+
+[node name="Health_Label" type="Label" parent="." unique_id=37981539]
+texture_filter = 1
+texture_repeat = 1
+offset_left = -51.0
+offset_top = 214.0
+offset_right = 52.0
+offset_bottom = 237.0
+text = "Health: 20/20"
+label_settings = SubResource("LabelSettings_twnlr")
+horizontal_alignment = 1
