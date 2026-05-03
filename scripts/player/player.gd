@@ -74,13 +74,13 @@ func check_raycast():
 func set_raycast():
 	if can_move and !is_talking:
 		if Input.is_action_pressed("right"):
-			raycast.target_position = Vector2(10, 0)
+			raycast.target_position = Vector2(13, 0)
 		elif Input.is_action_pressed("left"):
-			raycast.target_position = Vector2(-10, 0)
+			raycast.target_position = Vector2(-13, 0)
 		elif Input.is_action_pressed("up"):
-			raycast.target_position = Vector2(0, -10)
+			raycast.target_position = Vector2(0, -13)
 		elif Input.is_action_pressed("down"):
-			raycast.target_position = Vector2(0, 10)
+			raycast.target_position = Vector2(0, 13)
 
 func movement(delta: float):
 	if is_talking == true:
