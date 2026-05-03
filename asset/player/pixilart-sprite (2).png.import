@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4sv3ljgrpat0"
-valid=false
+uid="uid://gxgb00k4fwlo"
+path="res://.godot/imported/pixilart-sprite (2).png-1663328e800c8f969a96ce52c0a122ae.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://addons/discord-rpc-gd/._Logo_V2_No_Bg.png"
+source_file="res://asset/player/pixilart-sprite (2).png"
+dest_files=["res://.godot/imported/pixilart-sprite (2).png-1663328e800c8f969a96ce52c0a122ae.ctex"]
 
 [params]
 
