@@ -46,9 +46,11 @@ func check_raycast():
 				can_move = false
 				text_background.visible = true
 				is_talking = true
+				# For loop of each dialogue line
 				for i in range(raycast.get_collider().text.size()):
 					text_skip = false
 					var letter = 0
+					# For loop of each letter
 					for j in range(len(raycast.get_collider().text[i])):
 						if text_skip == false:
 							letter = j

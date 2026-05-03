@@ -21,9 +21,3 @@ func _physics_process(delta: float) -> void:
 		get_tree().quit()   
 	if Input.is_action_just_pressed("select") and start_selected:
 		get_tree().change_scene_to_file("res://scene/maps/prototype.tscn")
-
-func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/maps/prototype.tscn")
-
-func _on_exit_pressed() -> void:
-	get_tree().quit()

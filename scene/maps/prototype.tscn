@@ -98,4 +98,20 @@ player = NodePath("../../../../CharacterBody2D")
 top_limit = NodePath("../top_limit")
 bottom_limit = NodePath("../bottom_limit")
 
+[node name="npc3" type="CharacterBody2D" parent="." unique_id=1334643678 groups=["npc"]]
+position = Vector2(-58.461536, 116.92309)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("7_iho0x")
+text = Array[String](["* Hello, world!", "* More text", "* Test dialog end"])
+
+[node name="Npc" type="Sprite2D" parent="npc3" unique_id=523319472]
+texture_filter = 1
+position = Vector2(-32.307693, -53.076927)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_bggqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npc3" unique_id=1158448728]
+position = Vector2(-31.923082, -51.153862)
+shape = SubResource("RectangleShape2D_gqxxe")
+
 [editable path="ExtraPlayer"]
