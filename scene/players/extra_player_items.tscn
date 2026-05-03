@@ -43,7 +43,6 @@ script = ExtResource("2_cw3sb")
 [node name="TextBackground" type="Sprite2D" parent="Extra_player/text/CanvasLayer" unique_id=1225438969]
 texture_filter = 1
 texture_repeat = 2
-scale = Vector2(3.8999999, 2.6)
 texture = ExtResource("3_0vdmy")
 
 [node name="Label" type="Label" parent="Extra_player/text/CanvasLayer" unique_id=1186821268]
@@ -58,11 +57,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Camera_items" type="Node2D" parent="Extra_player" unique_id=441378721]
 
-[node name="PCamera" type="Camera2D" parent="Extra_player/Camera_items" unique_id=1323800304 node_paths=PackedStringArray("player", "left_limit", "right_limit")]
+[node name="PCamera" type="Camera2D" parent="Extra_player/Camera_items" unique_id=1323800304 node_paths=PackedStringArray("left_limit", "right_limit")]
 zoom = Vector2(3, 3)
 script = ExtResource("5_cw3sb")
 can_move_horizontal = true
-player = NodePath("")
 left_limit = NodePath("../left_limit")
 right_limit = NodePath("../right_limit")
 

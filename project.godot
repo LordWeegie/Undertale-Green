@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Undertale Green"
+config/description="A Undertale fan game called Undertale Green!"
 run/main_scene="uid://bm5e52qka88p7"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://bblrdb5qx4y7g"
+config/icon="uid://dhld83bgn1680"
 
 [display]
 

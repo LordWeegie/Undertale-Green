@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://j5x0snkpweoi"]
 
-[ext_resource type="PackedScene" uid="uid://d0de5ilxoyfej" path="res://scripts/player.tscn" id="1_rgtto"]
+[ext_resource type="PackedScene" uid="uid://d0de5ilxoyfej" path="res://scene/players/player2.tscn" id="1_rgtto"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i7uae"]
 load_path = "res://.godot/imported/isotopeblue.png-8ce549f8225fd6e0fb7a666251117df1.ctex"

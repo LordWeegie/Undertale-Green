@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b1exe52cexer5"]
 
-[ext_resource type="PackedScene" uid="uid://brpup1yhatd1n" path="res://scene/player/player.tscn" id="1_aamqp"]
+[ext_resource type="PackedScene" uid="uid://brpup1yhatd1n" path="res://scene/players/player.tscn" id="1_aamqp"]
 [ext_resource type="Texture2D" uid="uid://s660jmahf661" path="res://asset/maps/prototype_level.png" id="1_n5m7w"]
 [ext_resource type="Texture2D" uid="uid://brv5v84w0va4q" path="res://asset/prototype_npc/npc.png" id="6_bggqe"]
-[ext_resource type="PackedScene" path="res://scene/player/extra_player.tscn" id="6_gqxxe"]
-[ext_resource type="Script" uid="uid://bp6dck5hp3ta" path="res://scripts/npc.gd" id="7_iho0x"]
+[ext_resource type="PackedScene" uid="uid://03igkg6dffdx" path="res://scene/players/extra_player_items.tscn" id="6_gqxxe"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="7_iho0x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5m7w"]
 size = Vector2(10, 51)
@@ -95,6 +95,8 @@ camera = NodePath("../Camera_items/PCamera")
 position = Vector2(0, 10.769232)
 
 [node name="CanvasLayer" parent="ExtraPlayer/Extra_player/text" parent_id_path=PackedInt32Array(584687940, 637752625) index="0" unique_id=153939322 node_paths=PackedStringArray("camera")]
+offset = Vector2(0, -88.55)
+transform = Transform2D(1, 0, 0, 1, 0, -88.55)
 camera = NodePath("../../Camera_items/PCamera")
 
 [node name="PCamera" parent="ExtraPlayer/Extra_player/Camera_items" parent_id_path=PackedInt32Array(584687940, 441378721) index="0" unique_id=1323800304 node_paths=PackedStringArray("player", "top_limit", "bottom_limit")]
@@ -113,7 +115,7 @@ position = Vector2(-1.5384617, -116.92309)
 position = Vector2(-58.461536, 116.92309)
 scale = Vector2(1.2, 1.2)
 script = ExtResource("7_iho0x")
-text = Array[String](["* Hello, world!", "* More text", "* Test dialog end"])
+text = Array[String](["* Talk to the person above ;)!"])
 
 [node name="Npc" type="Sprite2D" parent="npc3" unique_id=523319472]
 texture_filter = 1

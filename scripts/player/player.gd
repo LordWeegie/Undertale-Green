@@ -48,6 +48,8 @@ func check_raycast():
 				is_talking = true
 				# For loop of each dialogue line
 				for i in range(raycast.get_collider().text.size()):
+					if raycast.get_collider().text.size() == 1:
+						final_text = true
 					text_skip = false
 					var letter = 0
 					# For loop of each letter

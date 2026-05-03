@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2bl02cfq47r4"]
 
-[ext_resource type="PackedScene" uid="uid://c22vyhukm42kc" path="res://scene/player_soul.tscn" id="1_w2wav"]
+[ext_resource type="PackedScene" uid="uid://c22vyhukm42kc" path="res://scene/players/player_soul.tscn" id="1_w2wav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sijg0"]
 size = Vector2(4, 204)
