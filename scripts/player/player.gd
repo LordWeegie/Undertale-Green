@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var speed = 100
 @export var walking_speed = 100
-@export var running_speed = 150
+@export var running_speed = 200
 @export var text_background : Sprite2D
 @export var dialogue_box : Label
 @onready var raycast = $RayCast2D
@@ -110,17 +110,14 @@ func movement(delta: float):
 		can_move = true
 	# Move character
 	if can_move:
+		var input_direction = Input.get_vector("left", "right", "up", "down")
+		velocity = input_direction * speed
 		if Input.is_action_pressed("down"):
-			position.y += speed * delta
 			moving_up_or_down = true
 		elif Input.is_action_pressed("up"):
-			position.y -= speed * delta
 			moving_up_or_down = true
-		else: moving_up_or_down = false
-		if Input.is_action_pressed("left"):
-			position.x -= speed * delta
-		if Input.is_action_pressed("right"):
-			position.x += speed * delta
+		else: 
+			moving_up_or_down = false
 			
 		if Input.is_action_pressed("right"):
 			$Sprite.flip_h = false

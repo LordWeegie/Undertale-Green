@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://c22vyhukm42kc"]
 
-[ext_resource type="Script" uid="uid://do38rupylsvt4" path="res://scripts/player.gd" id="1_hjaqi"]
+[ext_resource type="Script" uid="uid://b275pupajqiie" path="res://scripts/player_soul/player.gd" id="1_4gfrm"]
 [ext_resource type="Texture2D" uid="uid://dhld83bgn1680" path="res://soul.png" id="2_hjaqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo3ru"]
 size = Vector2(53.333332, 53.333332)
 
 [node name="player_soul" type="CharacterBody2D" unique_id=1273332767 groups=["player_soul"]]
-script = ExtResource("1_hjaqi")
+script = ExtResource("1_4gfrm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=952495919]
 texture_filter = 1
