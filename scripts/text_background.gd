@@ -21,5 +21,5 @@ func _on_check_player_bottom_body_entered(body: Node2D) -> void:
 
 func _on_check_player_top_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("text")
+		print("text 1")
 		offset = Vector2(39.48, -88.5)
