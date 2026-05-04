@@ -1,18 +1,13 @@
 [gd_scene format=3 uid="uid://nupxqoixxgwx"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_e5g8k"]
-[ext_resource type="Texture2D" path="res://asset/pixil-frame-0 (10).png" id="2_8hxod"]
-
 [node name="menu" type="Control" unique_id=440707113]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_e5g8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1363988160]
 texture_filter = 1
 position = Vector2(584, 122.99999)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_8hxod")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=766908668]
 texture_filter = 1
