@@ -6,11 +6,15 @@ var speed = 100
 @export var text_background : Sprite2D
 @export var dialogue_box : Label
 @onready var raycast = $RayCast2D
+@export var stamina_bar : AnimatedSprite2D
 var is_talking = false
 var moving_up_or_down = false
 var can_move = true
 var text_skip = false
-
+var can_run = true
+var is_stamina_draining = false
+var stamina_running = false
+var time_passed = 0
 # Signals
 signal continue_text_signal
 
@@ -27,6 +31,8 @@ func _process(delta: float) -> void:
 	movement(delta)
 	set_raycast()
 	check_raycast()
+	if not is_talking and stamina_running == false:
+		stamina(delta)
 
 func wait_text_final():
 	if final_text == true and is_talking == true:
@@ -86,6 +92,25 @@ func set_raycast():
 		elif Input.is_action_pressed("down"):
 			raycast.target_position = Vector2(0, 13)
 
+func play_stamina_animation():
+	if speed > 100 and can_run:
+		stamina_bar.visible = true
+		stamina_bar.play()
+		return true
+	return false
+	
+func stamina(delta: float):
+	if speed > 100 and velocity != Vector2(0.0, 0.0) and time_passed < 5.0:
+		stamina_bar.play()
+		print(time_passed)
+		time_passed += delta
+		if time_passed >= 4.4:
+			print("Test")
+			can_run = false
+			stamina_bar.stop()
+			await get_tree().create_timer(3.0).timeout
+			can_run = true
+			time_passed = 0
 func movement(delta: float):
 	if is_talking == true:
 		if Input.is_action_just_pressed("x"):
@@ -93,13 +118,14 @@ func movement(delta: float):
 	if is_talking == true:
 		can_move = false
 	# Sprinting system
-	if Input.is_action_pressed("x"):
+	if Input.is_action_pressed("x") and can_run:
 		speed = running_speed
 		$Sprite.speed_scale = 1.5
 	elif !Input.is_action_pressed("x"):
 		speed = walking_speed
 		$Sprite.speed_scale = 1.0
-	
+	if can_run == false:
+		speed = walking_speed
 	# Make sure the character isn't flipped when facing down
 	if $Sprite.animation == "down":
 		$Sprite.flip_h = false

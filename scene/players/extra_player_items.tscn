@@ -5,6 +5,99 @@
 [ext_resource type="Texture2D" uid="uid://cl4cgskh2loqn" path="res://asset/fonts/text_background.png" id="3_0vdmy"]
 [ext_resource type="Script" uid="uid://d11w3aabewfrf" path="res://scripts/player/camera.gd" id="3_xu1uj"]
 [ext_resource type="FontFile" uid="uid://rs34m4jdktdx" path="res://asset/fonts/8bitoperator_jve.ttf" id="4_axptn"]
+[ext_resource type="Texture2D" uid="uid://gxgb00k4fwlo" path="res://asset/player/stamina_bar.png" id="6_pdf1g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdf1g"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nak30"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdgb1"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcgf2"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3gy1"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o044h"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76jy8"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phbdi"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ekg"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6j3u"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g1ql"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_462t5"]
+atlas = ExtResource("6_pdf1g")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhmcx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdf1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nak30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdgb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcgf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3gy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o044h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76jy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phbdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41ekg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6j3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g1ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_462t5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8yewl"]
 size = Vector2(295.00003, 83.846176)
@@ -20,6 +113,13 @@ font_size = 55
 [node name="check_player_for_text" type="Node2D" parent="Extra_player" unique_id=1151276077 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_tvgr4")
 camera = NodePath("../Camera_items/PCamera")
+
+[node name="stamina_bar" type="AnimatedSprite2D" parent="Extra_player/check_player_for_text" unique_id=1009205718]
+texture_filter = 1
+position = Vector2(-117, 75)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lhmcx")
+frame_progress = 0.7729184
 
 [node name="check_player_bottom" type="Area2D" parent="Extra_player/check_player_for_text" unique_id=1685659070]
 

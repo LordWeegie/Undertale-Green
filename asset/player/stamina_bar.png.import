@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gxgb00k4fwlo"
-path="res://.godot/imported/pixilart-sprite (2).png-1663328e800c8f969a96ce52c0a122ae.ctex"
+path="res://.godot/imported/stamina_bar.png-1dd22fc9696cf32404987781ccae42f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/player/pixilart-sprite (2).png"
-dest_files=["res://.godot/imported/pixilart-sprite (2).png-1663328e800c8f969a96ce52c0a122ae.ctex"]
+source_file="res://asset/player/stamina_bar.png"
+dest_files=["res://.godot/imported/stamina_bar.png-1dd22fc9696cf32404987781ccae42f6.ctex"]
 
 [params]
 

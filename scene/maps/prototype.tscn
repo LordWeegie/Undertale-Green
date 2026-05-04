@@ -82,10 +82,11 @@ texture = ExtResource("6_bggqe")
 position = Vector2(-31.923082, -51.153862)
 shape = SubResource("RectangleShape2D_gqxxe")
 
-[node name="CharacterBody2D" parent="." unique_id=1370835567 node_paths=PackedStringArray("text_background", "dialogue_box") groups=["player"] instance=ExtResource("1_aamqp")]
+[node name="CharacterBody2D" parent="." unique_id=1370835567 node_paths=PackedStringArray("text_background", "dialogue_box", "stamina_bar") groups=["player"] instance=ExtResource("1_aamqp")]
 position = Vector2(0, 16.153847)
 text_background = NodePath("../ExtraPlayer/Extra_player/text/CanvasLayer/TextBackground")
 dialogue_box = NodePath("../ExtraPlayer/Extra_player/text/CanvasLayer/Label")
+stamina_bar = NodePath("../ExtraPlayer/Extra_player/check_player_for_text/stamina_bar")
 
 [node name="npc3" type="CharacterBody2D" parent="." unique_id=1334643678 groups=["npc"]]
 position = Vector2(-58.461536, 116.92309)
@@ -107,6 +108,10 @@ shape = SubResource("RectangleShape2D_gqxxe")
 
 [node name="check_player_for_text" parent="ExtraPlayer/Extra_player" parent_id_path=PackedInt32Array(584687940, 771137139) index="0" unique_id=1151276077 node_paths=PackedStringArray("player")]
 player = NodePath("../../../CharacterBody2D")
+
+[node name="stamina_bar" parent="ExtraPlayer/Extra_player/check_player_for_text" index="0" unique_id=1009205718]
+frame_progress = 0.0
+speed_scale = 0.5
 
 [node name="Label" parent="ExtraPlayer/Extra_player/text/CanvasLayer" parent_id_path=PackedInt32Array(584687940, 153939322) index="1" unique_id=1186821268]
 visible = true
