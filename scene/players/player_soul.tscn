@@ -13,7 +13,7 @@ script = ExtResource("1_4gfrm")
 texture_filter = 1
 texture = ExtResource("2_hjaqi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=504744832]
+[node name="pCol" type="CollisionShape2D" parent="." unique_id=504744832]
 position = Vector2(-2.9802322e-07, 2.3841858e-07)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_xo3ru")
