@@ -1,19 +1,56 @@
 [gd_scene format=3 uid="uid://c22vyhukm42kc"]
 
 [ext_resource type="Script" uid="uid://b275pupajqiie" path="res://scripts/player_soul/player.gd" id="1_4gfrm"]
-[ext_resource type="Texture2D" uid="uid://dhld83bgn1680" path="res://soul.png" id="2_hjaqi"]
+[ext_resource type="Texture2D" uid="uid://c0i5wg67af4o8" path="res://asset/player/soul_spritesheet.png" id="2_4gfrm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo3ru"]
 size = Vector2(53.333332, 53.333332)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x743p"]
+atlas = ExtResource("2_4gfrm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nkk6"]
+atlas = ExtResource("2_4gfrm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j6w4"]
+atlas = ExtResource("2_4gfrm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2hn1"]
+atlas = ExtResource("2_4gfrm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_23w47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x743p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nkk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j6w4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2hn1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="player_soul" type="CharacterBody2D" unique_id=1273332767 groups=["player_soul"]]
 script = ExtResource("1_4gfrm")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=952495919]
-texture_filter = 1
-texture = ExtResource("2_hjaqi")
 
 [node name="pCol" type="CollisionShape2D" parent="." unique_id=504744832]
 position = Vector2(-2.9802322e-07, 2.3841858e-07)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_xo3ru")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=114769571]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_23w47")
+frame_progress = 0.110199705

@@ -42,13 +42,13 @@ func movement():
 #calling functions!
 func _physics_process(_delta: float) -> void:
 	if facing_down:
-		print("Looking down")
+		$AnimatedSprite2D.frame = 3
 	elif facing_up:
-		print("Looking up")
+		$AnimatedSprite2D.frame = 0
 	elif facing_right:
-		print("Looking right")
+		$AnimatedSprite2D.frame = 1
 	elif facing_left:
-		print("Looking left")
+		$AnimatedSprite2D.frame = 2
 	movement()
 	move_and_slide()
 	check_health()
@@ -56,5 +56,5 @@ func _physics_process(_delta: float) -> void:
 func check_health():
 	if active_health <= 0:
 		get_tree().reload_current_scene()
-	health_label.text = "Health: " + str(active_health) + "/" + str(health_max)
+	health_label.text = "HP: " + str(active_health) + "/" + str(health_max)
 #animation for later

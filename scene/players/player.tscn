@@ -96,6 +96,8 @@ size = Vector2(13, 10)
 
 [node name="player" type="CharacterBody2D" unique_id=1370835567]
 script = ExtResource("1_5lop3")
+walking_speed = null
+running_speed = null
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2133884356]
 position = Vector2(-1, 0)
@@ -105,7 +107,7 @@ target_position = Vector2(0, 24)
 texture_filter = 1
 position = Vector2(-1, -6)
 sprite_frames = SubResource("SpriteFrames_sc4n2")
-animation = &"up"
+animation = &"left_and_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1787427075]
 position = Vector2(-0.5, 5)

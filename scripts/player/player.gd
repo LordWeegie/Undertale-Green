@@ -15,6 +15,9 @@ var can_run = true
 var is_stamina_draining = false
 var stamina_running = false
 var time_passed = 0
+var is_running : bool = false
+var stamina_draining : bool = false
+var stamina_gaining : bool = false
 # Signals
 signal continue_text_signal
 
@@ -31,8 +34,41 @@ func _process(delta: float) -> void:
 	movement(delta)
 	set_raycast()
 	check_raycast()
-	if not is_talking and stamina_running == false:
-		stamina(delta)
+	check_stamina()
+	if is_running == false and stamina_gaining == false:
+		print("gaining stamina pleasex")
+		gain_stamina()
+	elif is_running and stamina_draining == false:
+		print("test")
+		drain_stamina()
+
+func check_stamina():
+	if stamina_bar.frame == 0:
+		print("cant run")
+		can_run = false
+	else:
+		can_run = true
+	if stamina_bar.frame == 33 or is_talking:
+		var tween = create_tween()
+		tween.tween_property(stamina_bar, "modulate:a", 0, 1.0)
+	else:
+		var tween = create_tween()
+		tween.tween_property(stamina_bar, "modulate:a", 1.0, 0.5)
+func gain_stamina():
+	if stamina_bar.frame >= 0:
+		stamina_gaining = true
+		print("More gain")
+		await get_tree().create_timer(0.05).timeout
+		stamina_gaining = false
+		stamina_bar.frame += 1
+
+func drain_stamina():
+	if stamina_bar.frame <= 33:
+		stamina_draining = true
+		await get_tree().create_timer(0.1).timeout
+		stamina_draining = false
+		stamina_bar.frame -= 1
+
 
 func wait_text_final():
 	if final_text == true and is_talking == true:
@@ -92,26 +128,9 @@ func set_raycast():
 		elif Input.is_action_pressed("down"):
 			raycast.target_position = Vector2(0, 13)
 
-func play_stamina_animation():
-	if speed > 100 and can_run:
-		stamina_bar.visible = true
-		stamina_bar.play()
-		return true
-	return false
-	
-func stamina(delta: float):
-	if speed > 100 and velocity != Vector2(0.0, 0.0) and time_passed < 5.0:
-		stamina_bar.play()
-		print(time_passed)
-		time_passed += delta
-		if time_passed >= 4.4:
-			print("Test")
-			can_run = false
-			stamina_bar.stop()
-			await get_tree().create_timer(3.0).timeout
-			can_run = true
-			time_passed = 0
 func movement(delta: float):
+	if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
+		$Sprite.play("left_and_right")
 	if is_talking == true:
 		if Input.is_action_just_pressed("x"):
 			text_skip = true
@@ -121,7 +140,10 @@ func movement(delta: float):
 	if Input.is_action_pressed("x") and can_run:
 		speed = running_speed
 		$Sprite.speed_scale = 1.5
+		if Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
+			is_running = true
 	elif !Input.is_action_pressed("x"):
+		is_running = false
 		speed = walking_speed
 		$Sprite.speed_scale = 1.0
 	if can_run == false:
@@ -157,6 +179,8 @@ func movement(delta: float):
 		$Sprite.play("down")
 	elif Input.is_action_pressed("up") and can_move:
 		$Sprite.play("up")
+	elif Input.is_action_pressed("left") and Input.is_action_pressed("right"):
+		$Sprite.play("left_and_right")
 	else:
 		$Sprite.stop()
 	move_and_slide()
