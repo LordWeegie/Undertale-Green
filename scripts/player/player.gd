@@ -24,7 +24,7 @@ var final_text = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	stamina_bar.frame = 33
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("select") and is_talking:
@@ -57,7 +57,7 @@ func gain_stamina():
 		if Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
 			stamina_gaining = true
 			print("More gain")
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.3).timeout
 			stamina_gaining = false
 			stamina_bar.frame += 1
 		elif !Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
