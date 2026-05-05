@@ -95,6 +95,9 @@ stamina_bar = NodePath("../ExtraPlayer/Extra_player/check_player_for_text/stamin
 [node name="check_player_for_text" parent="ExtraPlayer/Extra_player" parent_id_path=PackedInt32Array(584687940, 771137139) index="0" unique_id=1151276077 node_paths=PackedStringArray("player")]
 player = NodePath("../../../player")
 
+[node name="Label" parent="ExtraPlayer/Extra_player/text/CanvasLayer" parent_id_path=PackedInt32Array(584687940, 153939322) index="1" unique_id=1186821268]
+visible = true
+
 [node name="PCamera" parent="ExtraPlayer/Extra_player/Camera_items" parent_id_path=PackedInt32Array(584687940, 441378721) index="0" unique_id=1323800304 node_paths=PackedStringArray("player", "left_limit", "right_limit")]
 can_move_horizontal = true
 player = NodePath("../../../../player")

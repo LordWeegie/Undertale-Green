@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	set_raycast()
 	check_raycast()
 	check_stamina()
-	if is_running == false and stamina_gaining == false:
+	if is_running == false and stamina_gaining == false or Input.is_action_pressed("x") and stamina_gaining == false and !Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
 		print("gaining stamina pleasex")
 		gain_stamina()
 	elif is_running and stamina_draining == false:
@@ -54,14 +54,21 @@ func check_stamina():
 		tween.tween_property(stamina_bar, "modulate:a", 1.0, 0.5)
 func gain_stamina():
 	if stamina_bar.frame >= 0:
-		stamina_gaining = true
-		print("More gain")
-		await get_tree().create_timer(0.05).timeout
-		stamina_gaining = false
-		stamina_bar.frame += 1
+		if Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
+			stamina_gaining = true
+			print("More gain")
+			await get_tree().create_timer(0.1).timeout
+			stamina_gaining = false
+			stamina_bar.frame += 1
+		elif !Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
+			stamina_gaining = true
+			print("More gain")
+			await get_tree().create_timer(0.05).timeout
+			stamina_gaining = false
+			stamina_bar.frame += 1
 
 func drain_stamina():
-	if stamina_bar.frame <= 33:
+	if stamina_bar.frame <= 33 and Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
 		stamina_draining = true
 		await get_tree().create_timer(0.1).timeout
 		stamina_draining = false
