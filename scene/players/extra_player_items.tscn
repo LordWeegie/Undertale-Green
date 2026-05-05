@@ -283,9 +283,9 @@ shape = SubResource("RectangleShape2D_8yewl")
 
 [node name="stamina_bar" type="AnimatedSprite2D" parent="Extra_player/check_player_for_text" unique_id=963920570]
 texture_filter = 1
-position = Vector2(-122, 75)
+position = Vector2(-122, -75)
 sprite_frames = SubResource("SpriteFrames_va5ls")
-frame_progress = 0.06121579
+frame_progress = 0.3487909
 
 [node name="text" type="Node2D" parent="Extra_player" unique_id=637752625]
 
