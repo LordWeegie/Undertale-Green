@@ -7,6 +7,10 @@ var speed = 100
 @export var dialogue_box : Label
 @onready var raycast = $RayCast2D
 @export var stamina_bar : AnimatedSprite2D
+@export var is_question : bool = false
+@export var question_limit : int = 3
+@export var question_number : int = 0
+@export var questions : Array[String] = ["Question 1", "Question 2", "Question 3"]
 var is_talking = false
 var moving_up_or_down = false
 var can_move = true
