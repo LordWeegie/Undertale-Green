@@ -15,6 +15,6 @@ func _ready() -> void:
 			
 			var instance = item_slot.instantiate()
 			instance.global_position = Vector2(x*50, y*50)
-			instance.slot_num = Vector2i(x,y)
+			instance.slot_num = Vector2i(x,y) #this line seems to make the test scene fail, can you check on it?
 			add_child(instance)
 			items[x][y] = instance
