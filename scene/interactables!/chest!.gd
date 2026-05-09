@@ -8,7 +8,7 @@ var healing_bottle : String = "Healing bottle"
 var beef : String = "Beef"
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("select"):
 		$Sprite2D.play("interacted")
 		print("sword")
