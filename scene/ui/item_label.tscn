@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://biwtuytdjjw4"]
+
+[ext_resource type="Script" uid="uid://cnsw02q3o6svv" path="res://scene/ui/itemslot.gd" id="1_se5ry"]
+
+[node name="item_label" type="Node2D" unique_id=1196534420]
+script = ExtResource("1_se5ry")
+
+[node name="Label" type="Label" parent="." unique_id=108928603]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "blank item"

@@ -102,6 +102,8 @@ func check_raycast():
 					print(question)
 					text_background.visible = true
 					dialogue_box.text = question
+				if is_talking and Input.is_action_just_pressed("ui_accept"):
+					is_talking = false
 				
 			if Input.is_action_just_pressed("select") and is_talking == false and final_text == false:
 				is_talking = true
