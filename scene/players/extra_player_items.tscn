@@ -256,9 +256,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_5atob"]
-font = ExtResource("4_axptn")
-font_size = 55
+[sub_resource type="Theme" id="Theme_pdf1g"]
+default_font = ExtResource("4_axptn")
+default_font_size = 64
 
 [node name="ExtraPlayer" type="Node2D" unique_id=584687940]
 
@@ -300,15 +300,14 @@ texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("3_0vdmy")
 
-[node name="Label" type="Label" parent="Extra_player/text/CanvasLayer" unique_id=1186821268]
-visible = false
+[node name="Label" type="RichTextLabel" parent="Extra_player/text/CanvasLayer" unique_id=1447537271]
 top_level = true
 offset_left = 341.0
 offset_top = 473.55
 offset_right = 885.0
 offset_bottom = 556.55
-label_settings = SubResource("LabelSettings_5atob")
-autowrap_mode = 3
+theme = SubResource("Theme_pdf1g")
+bbcode_enabled = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera_items" type="Node2D" parent="Extra_player" unique_id=441378721]
