@@ -1,11 +1,14 @@
 extends StaticBody2D
 
+#the chest is a simple peace of interactable, you use it, it gives you an item based off chance
+#chance related materials / var chances on object spawns?
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var sword : String = "Sword"
+var healing_bottle : String = "Healing bottle"
+var beef : String = "Beef"
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("select"):
+		$Sprite2D.play("interacted")
+		print("sword")

@@ -75,22 +75,34 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nqhi7")
 }],
-"loop": true,
+"loop": false,
 "name": &"interacted",
 "speed": 9.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmib"]
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1760713642]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r025e"]
+radius = 22.022715
+
+[node name="chest" type="StaticBody2D" unique_id=1760713642]
 script = ExtResource("1_r025e")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1056720048]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1924190841]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0f76i")
 animation = &"interacted"
-frame_progress = 0.5952702
+frame_progress = 0.71243405
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1443134920]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_mpmib")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2095904446]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=440283972]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_r025e")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]

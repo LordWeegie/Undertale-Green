@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ca5gslc74mbtk" path="res://asset/prototype_npc/npc.png" id="6_bggqe"]
 [ext_resource type="PackedScene" uid="uid://03igkg6dffdx" path="res://scene/players/extra_player_items.tscn" id="6_gqxxe"]
 [ext_resource type="Script" uid="uid://c6icqiuri7gic" path="res://scripts/npc/npc.gd" id="6_xacpo"]
+[ext_resource type="PackedScene" uid="uid://bo5mbugohj6f2" path="res://scene/ui/chest!.tscn" id="7_gqxxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5m7w"]
 size = Vector2(10, 51)
@@ -56,6 +57,9 @@ shape = SubResource("RectangleShape2D_klmgr")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1626627329]
 position = Vector2(0, 59)
 shape = SubResource("RectangleShape2D_46ayq")
+
+[node name="chest" parent="." unique_id=1760713642 instance=ExtResource("7_gqxxe")]
+position = Vector2(119.23079, -72.30771)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1813957208]
 show_behind_parent = true
