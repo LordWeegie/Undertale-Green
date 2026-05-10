@@ -1,6 +1,7 @@
 extends Node
 
 func _ready() -> void:
+	print("Starting DiscordRCPzz")
 	DiscordRPC.app_id = 1500535153070440721
 	DiscordRPC.details = "An Undertale fan game!"
 	DiscordRPC.state = "Menu"

@@ -92,7 +92,8 @@ script = ExtResource("1_r025e")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0f76i")
 animation = &"interacted"
-frame_progress = 0.71243405
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1443134920]
 position = Vector2(0, 6)
