@@ -105,7 +105,6 @@ anchors_preset = -1
 anchor_bottom = 0.16203703
 offset_left = 340.0
 offset_right = 884.0
-text = "x"
 scroll_active = false
 
 [node name="PCamera" parent="ExtraPlayer/Extra_player/Camera_items" parent_id_path=PackedInt32Array(584687940, 441378721) index="0" unique_id=1323800304 node_paths=PackedStringArray("player", "left_limit", "right_limit", "top_limit", "bottom_limit")]

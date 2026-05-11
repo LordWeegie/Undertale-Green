@@ -19,25 +19,25 @@ func movement():
 	if Input.is_action_just_pressed("select"):
 		active_health -= 3
 		print(active_health)
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("left"):
 		facing_down = true
 		facing_left = false
 		facing_right = false
 		facing_up = false
 
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("right"):
 		facing_up = true
 		facing_down = false
 		facing_left = false
 		facing_right = false
 
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("up"):
 		facing_up = false
 		facing_down = false
 		facing_right = false
 		facing_left = true
 
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_just_pressed("down"):
 		facing_down = false
 		facing_up = false
 		facing_left = false
