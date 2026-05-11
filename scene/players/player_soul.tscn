@@ -42,6 +42,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gfrm"]
+radius = 9.0
+height = 18.0
+
 [node name="player_soul" type="CharacterBody2D" unique_id=1273332767 groups=["player_soul"]]
 script = ExtResource("1_4gfrm")
 
@@ -54,3 +58,8 @@ shape = SubResource("RectangleShape2D_xo3ru")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_23w47")
 frame_progress = 0.110199705
+
+[node name="Area2D" type="Area2D" parent="." unique_id=306857000]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1878527927]
+shape = SubResource("CapsuleShape2D_4gfrm")

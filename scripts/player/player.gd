@@ -72,8 +72,6 @@ func drain_stamina():
 		await get_tree().create_timer(0.1).timeout
 		stamina_draining = false
 		stamina_bar.frame -= 1
-
-
 func wait_text_final():
 	if final_text == true and is_talking == true:
 		await get_tree().create_timer(0.01).timeout
@@ -144,9 +142,6 @@ func check_raycast():
 								dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
 							await continue_text_signal
 							wait_text_final()
-				
-
-			
 func set_raycast():
 	if can_move and !is_talking:
 		if Input.is_action_pressed("right"):
