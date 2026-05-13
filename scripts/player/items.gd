@@ -15,6 +15,7 @@ func _ready() -> void:
 			
 			var instance = item_slot.instantiate()
 			instance.global_position = Vector2(x*50, y*50)
+			print(str(x) + str(y))
 			instance.slot_num = Vector2i(x,y)
 			add_child(instance)
 			items[x][y] = instance
