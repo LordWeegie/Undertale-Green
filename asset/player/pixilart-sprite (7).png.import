@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oufuy838b2rq"
-valid=false
+uid="uid://csqtqe7me2xee"
+path="res://.godot/imported/pixilart-sprite (7).png-1099f7cf78084cb0458b2f4d12173b4c.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://asset/player/._stamina_bar_sheet.png"
+source_file="res://asset/player/pixilart-sprite (7).png"
+dest_files=["res://.godot/imported/pixilart-sprite (7).png-1099f7cf78084cb0458b2f4d12173b4c.ctex"]
 
 [params]
 
