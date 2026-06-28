@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dkdf1t70us28"]
+
+[ext_resource type="Script" uid="uid://cnclntoyqn3vv" path="res://scripts/combat/bullet.gd" id="1_jro4m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w6rq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jro4m"]
+size = Vector2(4, 4)
+
+[node name="Bullet" type="CharacterBody2D" unique_id=550432880 groups=["bullet"]]
+script = ExtResource("1_jro4m")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=870757014]
+scale = Vector2(3, 3)
+mesh = SubResource("BoxMesh_w6rq7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1458317965]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1624229716]
+shape = SubResource("RectangleShape2D_jro4m")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

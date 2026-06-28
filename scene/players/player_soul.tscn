@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c0i5wg67af4o8" path="res://asset/player/soul_spritesheet.png" id="2_4gfrm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xo3ru"]
-size = Vector2(53.333332, 53.333332)
+size = Vector2(106.666664, 106.666664)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x743p"]
 atlas = ExtResource("2_4gfrm")
@@ -46,11 +46,12 @@ animations = [{
 script = ExtResource("1_4gfrm")
 
 [node name="pCol" type="CollisionShape2D" parent="." unique_id=504744832]
-position = Vector2(-2.9802322e-07, 2.3841858e-07)
+position = Vector2(1.1920929e-07, -2.3841858e-07)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_xo3ru")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=114769571]
+modulate = Color(0.91228896, 0.9122889, 0.91228884, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_23w47")
-frame_progress = 0.110199705
+frame_progress = 0.3626542

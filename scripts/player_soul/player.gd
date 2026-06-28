@@ -7,10 +7,10 @@ extends CharacterBody2D
 @export var health_label : Label
 
 # Check where facing variables
-var facing_down = false
-var facing_up = true
-var facing_left = false
-var facing_right = false
+@export var facing_down = false
+@export var facing_up = true
+@export var facing_left = false
+@export var facing_right = false
 #movement
 func movement():
 	if Input.is_action_just_pressed("select"):
