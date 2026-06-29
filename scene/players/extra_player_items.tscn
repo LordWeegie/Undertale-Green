@@ -285,7 +285,8 @@ shape = SubResource("RectangleShape2D_8yewl")
 texture_filter = 1
 position = Vector2(-122, -75)
 sprite_frames = SubResource("SpriteFrames_va5ls")
-frame_progress = 0.3487909
+frame = 18
+frame_progress = 0.6865107
 
 [node name="text" type="Node2D" parent="Extra_player" unique_id=637752625]
 
@@ -300,7 +301,11 @@ texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("3_0vdmy")
 
+<<<<<<< Updated upstream
 [node name="Label" type="RichTextLabel" parent="Extra_player/text/CanvasLayer" unique_id=1447537271]
+=======
+[node name="Label" type="Label" parent="Extra_player/text/CanvasLayer" unique_id=1186821268]
+>>>>>>> Stashed changes
 top_level = true
 offset_left = 341.0
 offset_top = 473.55

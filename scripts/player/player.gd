@@ -37,7 +37,11 @@ func _process(delta: float) -> void:
 	set_raycast()
 	check_raycast()
 	check_stamina()
+<<<<<<< Updated upstream
 	if is_running == false and stamina_gaining == false or Input.is_action_pressed("x") and stamina_gaining == false and !Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
+=======
+	if is_running == false and stamina_gaining == false:
+>>>>>>> Stashed changes
 		gain_stamina()
 	elif is_running and stamina_draining == false:
 		drain_stamina()
@@ -55,6 +59,7 @@ func check_stamina():
 		tween.tween_property(stamina_bar, "modulate:a", 1.0, 0.5)
 func gain_stamina():
 	if stamina_bar.frame >= 0:
+<<<<<<< Updated upstream
 		if Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
 			stamina_gaining = true
 			await get_tree().create_timer(0.3).timeout
@@ -65,6 +70,12 @@ func gain_stamina():
 			await get_tree().create_timer(0.05).timeout
 			stamina_gaining = false
 			stamina_bar.frame += 1
+=======
+		stamina_gaining = true
+		await get_tree().create_timer(0.05).timeout
+		stamina_gaining = false
+		stamina_bar.frame += 1
+>>>>>>> Stashed changes
 
 func drain_stamina():
 	if stamina_bar.frame <= 33 and Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
@@ -104,6 +115,7 @@ func check_raycast():
 					is_talking = false
 				
 			if Input.is_action_just_pressed("select") and is_talking == false and final_text == false:
+<<<<<<< Updated upstream
 				is_talking = true
 				if is_question:
 					print(question)
@@ -113,6 +125,10 @@ func check_raycast():
 					if questions.size() == 3:
 						pass
 					can_move = false
+=======
+				print("Show text")
+				can_move = false
+>>>>>>> Stashed changes
 				text_background.visible = true
 				is_talking = true
 				# For loop of each dialogue line

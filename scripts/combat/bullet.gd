@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 		move_and_slide()
 
 func which_bullet():
-	if get_tree().get_first_node_in_group("root").attacks[self.attack_id]:
+	pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_soul"):
