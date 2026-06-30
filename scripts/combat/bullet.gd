@@ -15,12 +15,34 @@ var attack_id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
+	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "left":
+		left = true
+		right = false
+		down = false
+		up = false
+		print("left")
+	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "up":
+		left = false
+		right = false
+		down = false
+		up = true
+		print("up")
+	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "right":
+		left = false
+		right = true
+		down = false
+		up = false
+		print("right")
+	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "down":
+		left = false
+		right = false
+		down = true
+		up = false
+		print("down")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if get_tree().get_first_node_in_group("root").start_left:
+	if left:
 		attack_id+=1
 		if player.facing_left and touching_player:
 			queue_free()
@@ -29,7 +51,7 @@ func _process(delta: float) -> void:
 			queue_free()
 			print("wrong")
 			player.active_health -= 3
-	elif get_tree().get_first_node_in_group("root").start_right:
+	elif right:
 		attack_id+=1
 		if player.facing_right and touching_player:
 			queue_free()
@@ -38,7 +60,7 @@ func _process(delta: float) -> void:
 			print("wrong")
 			player.active_health -= 3
 			queue_free()
-	elif get_tree().get_first_node_in_group("root").start_up:
+	elif up:
 		attack_id+=1
 		if player.facing_up and touching_player:
 			queue_free()
@@ -47,7 +69,7 @@ func _process(delta: float) -> void:
 			queue_free()
 			print("wrong")
 			player.active_health -= 3
-	elif get_tree().get_first_node_in_group("root").start_bottom:
+	elif down:
 		attack_id+=1
 		if player.facing_down and touching_player:
 			queue_free()
@@ -62,8 +84,8 @@ func _process(delta: float) -> void:
 		velocity = direction * speed
 		move_and_slide()
 
-func which_bullet():
-	if get_tree().get_first_node_in_group("root").attacks[self.attack_id]:
+
+		
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player_soul"):
