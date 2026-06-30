@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var attacks : Array[String]
-@export var delay : float = 1.0
+@export var delay : float = 0.3
 var attacks_id : int = 0
 @export var can_attack : bool = true
 

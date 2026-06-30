@@ -4,13 +4,9 @@ var speed = 100
 @export var walking_speed = 100
 @export var running_speed = 200
 @export var text_background : Sprite2D
-@export var dialogue_box : RichTextLabel
+@export var dialogue_box : Label
 @onready var raycast = $RayCast2D
 @export var stamina_bar : AnimatedSprite2D
-@export var is_question : bool = false
-@export var question_limit : int = 3
-@export var question_number : int = 0
-@export var questions : Array[String] = ["Question 1", "Question 2", "Question 3"]
 var is_talking = false
 var moving_up_or_down = false
 var can_move = true
@@ -28,54 +24,24 @@ var final_text = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass # Replace with function body.
 	stamina_bar.frame = 33
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("select") and is_talking:
-		continue_text_signal.emit()
-	movement(delta)
-	set_raycast()
-	check_raycast()
-	check_stamina()
-<<<<<<< Updated upstream
-	if is_running == false and stamina_gaining == false or Input.is_action_pressed("x") and stamina_gaining == false and !Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
-=======
-	if is_running == false and stamina_gaining == false:
->>>>>>> Stashed changes
-		gain_stamina()
-	elif is_running and stamina_draining == false:
-		drain_stamina()
-
-func check_stamina():
-	if stamina_bar.frame == 0:
-		can_run = false
-	else:
-		can_run = true
-	if stamina_bar.frame == 33 or is_talking:
-		var tween = create_tween()
-		tween.tween_property(stamina_bar, "modulate:a", 0, 1.0)
-	else:
-		var tween = create_tween()
-		tween.tween_property(stamina_bar, "modulate:a", 1.0, 0.5)
-func gain_stamina():
-	if stamina_bar.frame >= 0:
-<<<<<<< Updated upstream
 		if Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
 			stamina_gaining = true
+			print("More gain")
+			await get_tree().create_timer(0.1).timeout
 			await get_tree().create_timer(0.3).timeout
 			stamina_gaining = false
 			stamina_bar.frame += 1
 		elif !Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
 			stamina_gaining = true
+			print("More gain")
 			await get_tree().create_timer(0.05).timeout
 			stamina_gaining = false
 			stamina_bar.frame += 1
-=======
-		stamina_gaining = true
-		await get_tree().create_timer(0.05).timeout
-		stamina_gaining = false
-		stamina_bar.frame += 1
->>>>>>> Stashed changes
 
 func drain_stamina():
 	if stamina_bar.frame <= 33 and Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
@@ -83,6 +49,8 @@ func drain_stamina():
 		await get_tree().create_timer(0.1).timeout
 		stamina_draining = false
 		stamina_bar.frame -= 1
+
+
 func wait_text_final():
 	if final_text == true and is_talking == true:
 		await get_tree().create_timer(0.01).timeout
@@ -97,38 +65,8 @@ func check_raycast():
 	# a LOT of the dialogue code
 	if raycast.is_colliding(): 
 		if raycast.get_collider().is_in_group("npc"):
-			var question = "[color=green]" + questions[0] + "[/color]         " + questions[1]
-			if is_talking:
-				if is_question and questions.size() == 2 and Input.is_action_just_pressed("right") and is_talking:
-					question  = questions[0] + "         " + "[color=green]" + questions[1] + "[/color]"
-					print("Come on!")
-					print(question)
-					text_background.visible = true
-					dialogue_box.text = question
-				if is_question and questions.size() == 2 and Input.is_action_just_pressed("left") and is_talking:
-					question  = "[color=green]" + questions[0] + "[/color]" + "         " + questions[1]
-					print("Come on!")
-					print(question)
-					text_background.visible = true
-					dialogue_box.text = question
-				if is_talking and Input.is_action_just_pressed("ui_accept"):
-					is_talking = false
-				
 			if Input.is_action_just_pressed("select") and is_talking == false and final_text == false:
-<<<<<<< Updated upstream
-				is_talking = true
-				if is_question:
-					print(question)
-					if questions.size() == 2:
-						text_background.visible = true
-						dialogue_box.text = question
-					if questions.size() == 3:
-						pass
-					can_move = false
-=======
-				print("Show text")
 				can_move = false
->>>>>>> Stashed changes
 				text_background.visible = true
 				is_talking = true
 				# For loop of each dialogue line
@@ -138,26 +76,28 @@ func check_raycast():
 					text_skip = false
 					var letter = 0
 					# For loop of each letter
-					if is_question == false:
-						for j in range(len(raycast.get_collider().text[i])):
-							if text_skip == false:
-								letter = j
-							else:
-								letter = raycast.get_collider().text[i].length()
-								break
-							dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
-							await get_tree().create_timer(0.08).timeout
-						if i < raycast.get_collider().text.size() -1:
-							if text_skip == true:
-								dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
-							final_text = true
-							print(i)
-							await continue_text_signal
+					for j in range(len(raycast.get_collider().text[i])):
+						if text_skip == false:
+							letter = j
 						else:
-							if text_skip == true:
-								dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
-							await continue_text_signal
-							wait_text_final()
+							letter = raycast.get_collider().text[i].length()
+							break
+						dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
+						await get_tree().create_timer(0.08).timeout
+					if i < raycast.get_collider().text.size() -1:
+						if text_skip == true:
+							dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
+						final_text = true
+						print(i)
+						await continue_text_signal
+					else:
+						if text_skip == true:
+							dialogue_box.text = raycast.get_collider().text[i].substr(0, letter + 1)
+						await continue_text_signal
+						wait_text_final()
+				
+
+			
 func set_raycast():
 	if can_move and !is_talking:
 		if Input.is_action_pressed("right"):
@@ -169,7 +109,7 @@ func set_raycast():
 		elif Input.is_action_pressed("down"):
 			raycast.target_position = Vector2(0, 13)
 
-func movement(_delta: float):
+func movement(delta: float):
 	if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
 		$Sprite.play("left_and_right")
 	if is_talking == true:
@@ -197,27 +137,22 @@ func movement(_delta: float):
 		can_move = false
 	elif !is_talking:
 		can_move = true
-	else:
-		can_move = false
 	# Move character
 	if can_move:
 		var input_direction = Input.get_vector("left", "right", "up", "down")
-		if is_talking == false:
-			velocity = input_direction * speed
-			if Input.is_action_pressed("down"):
-				moving_up_or_down = true
-			elif Input.is_action_pressed("up"):
-				moving_up_or_down = true
-			else: 
-				moving_up_or_down = false
-		else:
-			velocity = Vector2(0, 0)
+		velocity = input_direction * speed
+		if Input.is_action_pressed("down"):
+			moving_up_or_down = true
+		elif Input.is_action_pressed("up"):
+			moving_up_or_down = true
+		else: 
+			moving_up_or_down = false
+			
 		if Input.is_action_pressed("right"):
 			$Sprite.flip_h = false
 		elif Input.is_action_pressed("left"):
 			$Sprite.flip_h = true
-	if can_move == false:
-		velocity = Vector2(0,0)
+	
 	# Animate character
 	if Input.is_action_pressed("left") and can_move or Input.is_action_pressed("right") and can_move:
 		$Sprite.play("left_and_right")
