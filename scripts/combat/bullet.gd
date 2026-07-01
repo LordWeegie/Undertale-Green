@@ -15,25 +15,25 @@ var attack_id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "left":
+	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "left":
 		left = true
 		right = false
 		down = false
 		up = false
 		print("left")
-	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "up":
+	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "up":
 		left = false
 		right = false
 		down = false
 		up = true
 		print("up")
-	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "right":
+	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "right":
 		left = false
 		right = true
 		down = false
 		up = false
 		print("right")
-	if get_tree().get_first_node_in_group("root").attacks[self.attack_id] == "down":
+	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "down":
 		left = false
 		right = false
 		down = true
