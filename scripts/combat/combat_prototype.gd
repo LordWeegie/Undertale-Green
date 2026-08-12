@@ -5,6 +5,9 @@ extends Node2D
 var attacks_id : int = 0
 @export var can_attack : bool = true
 
+var attack_direction : String
+var attack_delay : float
+
 @onready var bullet_scene = preload("res://scene/players/bullet.tscn")
 
 @export var start_left = false
@@ -22,7 +25,7 @@ func attack():
 	if attacks_id > attacks.size() - 1:
 		can_attack = false
 		return
-	if attacks[attacks_id] == "left":
+	if attack_direction == "left":
 		print("Left")
 		start_left = true
 		start_right = false
@@ -34,7 +37,7 @@ func attack():
 		
 		add_child(bullet)
 		
-	elif attacks[attacks_id] == "right":
+	elif attack_direction == "right":
 		print("Right")
 		start_left = false
 		start_right = true
@@ -46,7 +49,7 @@ func attack():
 		
 		add_child(bullet)
 
-	elif attacks[attacks_id] == "up":
+	elif attack_direction == "up":
 		print("Up")
 		start_left = false
 		start_right = false
@@ -58,7 +61,7 @@ func attack():
 		
 		add_child(bullet)
 
-	elif attacks[attacks_id] == "down":
+	elif attack_direction == "down":
 		print("Down")
 		start_left = false
 		start_right = false
@@ -79,6 +82,9 @@ func _physics_process(delta: float) -> void:
 		attack()
 	else:
 		return
+	if attacks_id != attacks.size():
+		attack_direction = attacks[attacks_id].split(" ")[0]
+		delay = float(attacks[attacks_id].split(" ")[1])
 		
 func attack_cooldown():
 	await get_tree().create_timer(delay).timeout

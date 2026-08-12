@@ -23,7 +23,7 @@ font_color = Color(0, 1, 0, 1)
 
 [node name="Node2D" type="Node2D" unique_id=1646106935 groups=["root"]]
 script = ExtResource("1_7hd60")
-attacks = Array[String](["left", "right", "up", "up", "down", "right", "right", "up", "right", "right", "up", "down", "left"])
+attacks = Array[String](["left 0.01", "right 0.01", "up 0.1", "up 0.1", "down 1", "right 1", "right 1", "up 1", "right 1", "right 1", "up 0.2", "down 0.2", "left 0.2"])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1888388535]
 custom_minimum_size = Vector2(500, 500)

@@ -3,95 +3,76 @@ extends CharacterBody2D
 var speed = 200
 @onready var player = get_tree().get_first_node_in_group("player_soul")
 
-
-var left = false
-var right = false
-var up = false
-var down = false
+var attack_direction = ""
+var delay = 0.1
 
 var touching_player = false
+var touch_timer = 0.0
+var has_checked = false
 
-var attack_id = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "left":
-		left = true
-		right = false
-		down = false
-		up = false
-		print("left")
-	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "up":
-		left = false
-		right = false
-		down = false
-		up = true
-		print("up")
-	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "right":
-		left = false
-		right = true
-		down = false
-		up = false
-		print("right")
-	if get_tree().get_first_node_in_group("root").attacks[get_tree().get_first_node_in_group("root").attacks_id] == "down":
-		left = false
-		right = false
-		down = true
-		up = false
-		print("down")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if left:
-		attack_id+=1
-		if player.facing_left and touching_player:
-			queue_free()
-			print("yay")
-		elif touching_player and !player.facing_left:
-			queue_free()
-			print("wrong")
-			player.active_health -= 3
-	elif right:
-		attack_id+=1
-		if player.facing_right and touching_player:
-			queue_free()
-			print("yay")
-		elif touching_player and !player.facing_right:
-			print("wrong")
-			player.active_health -= 3
-			queue_free()
-	elif up:
-		attack_id+=1
-		if player.facing_up and touching_player:
-			queue_free()
-			print("yay")
-		elif touching_player and !player.facing_up:
-			queue_free()
-			print("wrong")
-			player.active_health -= 3
-	elif down:
-		attack_id+=1
-		if player.facing_down and touching_player:
-			queue_free()
-			print("yay")
-		elif touching_player and !player.facing_down:
-			queue_free()
-			print("wrong")
-			player.active_health -= 3
+func _ready():
+	# Get the parent combat controller
+	var combat_controller = get_parent()
 	
+	# Read the attack data directly from the controller's variables
+	attack_direction = combat_controller.attack_direction
+	delay = combat_controller.attack_delay
+	
+	print("Bullet: ", attack_direction, " | Delay: ", delay)
+
+func _process(delta):
 	if player:
 		var direction = global_position.direction_to(player.global_position)
 		velocity = direction * speed
 		move_and_slide()
+	
+	if touching_player and not has_checked:
+		touch_timer += delta
+		print("Touch timer: ", touch_timer)
+		if touch_timer >= delay:
+			print("Timer reached delay! Checking direction...")
+			check_direction()
+			has_checked = true
 
+func check_direction():
+	print("=== check_direction() called ===")
+	print("attack_direction = '", attack_direction, "'")
+	
+	var facing_correct = false
+	
+	match attack_direction:
+		"left":
+			facing_correct = player.facing_left
+			print("Player facing_left = ", player.facing_left)
+		"right":
+			facing_correct = player.facing_right
+			print("Player facing_right = ", player.facing_right)
+		"up":
+			facing_correct = player.facing_up
+			print("Player facing_up = ", player.facing_up)
+		"down":
+			facing_correct = player.facing_down
+			print("Player facing_down = ", player.facing_down)
+		_:
+			print("ERROR: Unknown direction! attack_direction = '", attack_direction, "'")
+	
+	print("facing_correct = ", facing_correct)
+	
+	if facing_correct:
+		print("✅ Blocked! Deleting bullet.")
+		queue_free()
+	else:
+		print("❌ Hit! Dealing 3 damage and deleting bullet.")
+		player.active_health -= 3
+		queue_free()
 
-		
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(body):
 	if body.is_in_group("player_soul"):
 		touching_player = true
+		print("touching_player = true")
 
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_exited(body):
 	if body.is_in_group("player_soul"):
 		touching_player = false
+		touch_timer = 0.0
+		print("touching_player = false, touch_timer reset")
